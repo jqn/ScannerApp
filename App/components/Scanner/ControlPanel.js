@@ -32,7 +32,7 @@ const styles = {
   },
 };
 
-const ControlPanel = () => {
+const ControlPanel = ({onScanPress, scanValue}) => {
   return (
     <View style={styles.container}>
       <ListItem containerStyle={styles.listItem}>
@@ -40,6 +40,7 @@ const ControlPanel = () => {
           placeholder="Barcode"
           leftIcon={{type: 'ionicon', name: 'md-barcode-sharp'}}
           containerStyle={styles.input}
+          value={scanValue}
         />
       </ListItem>
       <Button
@@ -47,6 +48,7 @@ const ControlPanel = () => {
         type="outline"
         buttonStyle={styles.button}
         titleStyle={styles.buttonTitle}
+        onPress={onScanPress}
       />
     </View>
   );
