@@ -17,6 +17,8 @@ const Scanner = ({}) => {
           animatedLineColor={colors.$primary}
           edgeColor={colors.$primary}
           animatedLineOrientation="vertical"
+          height={100}
+          width={300}
         />
       </RNCamera>
       <ControlPanel />

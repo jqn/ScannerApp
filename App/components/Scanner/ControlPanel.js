@@ -1,42 +1,53 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 
-import {Button, Input, Icon, ListItem} from 'react-native-elements';
+import {Button, Input, ListItem} from 'react-native-elements';
+import {getBottomSpace, ifIphoneX} from 'react-native-iphone-x-helper';
 
 const styles = {
-  root: {
-    flex: 1,
-  },
-  upperSection: {
-    flex: 1,
-  },
-  lowerSection: {
-    paddingVertical: 30,
-    paddingHorizontal: 20,
+  container: {
+    paddingHorizontal: 18,
     backgroundColor: 'white',
+    ...ifIphoneX(
+      {
+        paddingBottom: getBottomSpace(true),
+      },
+      {
+        paddingBottom: 18,
+      },
+    ),
   },
-  camera: {
-    height: '100%',
+  listItem: {
+    paddingHorizontal: 0,
+    paddingVertical: 8,
+  },
+  input: {
+    paddingHorizontal: 0,
+  },
+  button: {
+    borderColor: '#474747',
+  },
+  buttonTitle: {
+    color: '#474747',
   },
 };
 
 const ControlPanel = () => {
   return (
-    <View style={styles.lowerSection}>
-      <ListItem>
-        {/* <Icon type={'Ionicons'} active name="md-barcode" /> */}
-        {/* <Input
-          placeholder="Barcode of the ListItem"
-          // value={this.state.barcode}
-          // onChangeText={this.handleChange}
-        /> */}
+    <View style={styles.container}>
+      <ListItem containerStyle={styles.listItem}>
+        <Input
+          placeholder="Barcode"
+          leftIcon={{type: 'ionicon', name: 'md-barcode-sharp'}}
+          containerStyle={styles.input}
+        />
       </ListItem>
       <Button
-      // primary
-      // onPress={this.onGetItemPress}
-      >
-        <Text>Get Item</Text>
-      </Button>
+        title="Capture"
+        type="outline"
+        buttonStyle={styles.button}
+        titleStyle={styles.buttonTitle}
+      />
     </View>
   );
 };
